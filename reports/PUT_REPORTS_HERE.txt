@@ -1,0 +1,9 @@
+Put your project report PDFs here, renamed exactly to:
+  Surveying_Swarm_Report.pdf                (Autonomous Surveying Swarm)
+  Human_Behavior_Recognition_Report.pdf     (CNN-LSTM behavior recognition)
+  Furuta_Pendulum_Report.pdf                (Furuta pendulum control)
+  Humanoid_Arm_Pneumatic_Report.pdf         (pneumatic Humanoid Arm)
+  Industrial_Automation_Report.pdf          (Factory I/O production line)
+  Chassis_Plate_FEA_Report.pdf              (mobile-robot chassis plate FEA)
+
+No report for one of them? Delete that project's <div class="card-links"> block in index.html.

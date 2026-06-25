@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taha Gamal Alieldin — Mechatronics Engineer</title>
+<meta name="description" content="Mechatronics engineer specializing in automation, robotics, and machine learning. Autonomous survey swarms, PLC factory lines, control systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#181B22;
+    --bg-2:#1F232C;
+    --bg-3:#262B36;
+    --line:#333a47;
+    --line-soft:#2a2f3a;
+    --text:#E9E7E1;
+    --muted:#9AA1AE;
+    --muted-2:#6e7682;
+    --amber:#E6A23C;
+    --amber-soft:rgba(230,162,60,.13);
+    --good:#6FBF73;
+    --display:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --maxw:1120px;
+    --r:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--amber);color:#14181F}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .kicker{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--amber);display:inline-flex;
+    align-items:center;gap:10px;
+  }
+  .kicker::before{content:"";width:22px;height:1px;background:var(--amber);opacity:.7}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(24,27,34,.78);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{font-family:var(--mono);font-weight:500;letter-spacing:.04em;font-size:.95rem}
+  .brand b{color:var(--amber);font-weight:500}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:.86rem;color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{
+    font-family:var(--mono);font-size:.8rem;border:1px solid var(--line);
+    padding:8px 14px;border-radius:8px;color:var(--text);transition:.2s;
+  }
+  .nav-cta:hover{border-color:var(--amber);color:var(--amber)}
+  .menu-btn{display:none}
+  @media(max-width:780px){
+    .nav-links a:not(.nav-cta){display:none}
+  }
+
+  /* ---------- HERO ---------- */
+  header{position:relative;overflow:hidden;border-bottom:1px solid var(--line-soft)}
+  #voronoi{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+  .hero-fade{position:absolute;inset:0;background:
+    radial-gradient(120% 80% at 80% 0%,transparent,var(--bg) 78%),
+    linear-gradient(180deg,transparent 60%,var(--bg))}
+  .hero{position:relative;padding:96px 0 88px}
+  .status{
+    font-family:var(--mono);font-size:.78rem;color:var(--muted);
+    display:inline-flex;align-items:center;gap:9px;margin-bottom:26px;
+    border:1px solid var(--line);border-radius:40px;padding:6px 14px;background:rgba(31,35,44,.6);
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 0 rgba(111,191,115,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(111,191,115,.5)}70%{box-shadow:0 0 0 7px rgba(111,191,115,0)}100%{box-shadow:0 0 0 0 rgba(111,191,115,0)}}
+  @media(prefers-reduced-motion:reduce){.dot{animation:none}}
+  h1{
+    font-family:var(--display);font-weight:600;line-height:1.02;
+    font-size:clamp(2.6rem,7vw,5rem);letter-spacing:-.02em;max-width:14ch;
+  }
+  h1 .amb{color:var(--amber)}
+  .lede{
+    margin-top:24px;max-width:54ch;font-size:1.14rem;color:#c8cbd2;
+  }
+  .lede b{color:var(--text);font-weight:600}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .btn{
+    font-family:var(--mono);font-size:.85rem;padding:12px 20px;border-radius:9px;
+    display:inline-flex;align-items:center;gap:9px;transition:.2s;border:1px solid transparent;
+  }
+  .btn-primary{background:var(--amber);color:#14181F;font-weight:500}
+  .btn-primary:hover{background:#f1b251;transform:translateY(-1px)}
+  .btn-ghost{border-color:var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+
+  /* spec strip */
+  .specs{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft);
+    border:1px solid var(--line-soft);border-radius:var(--r);overflow:hidden;margin-top:54px;
+  }
+  .spec{background:var(--bg-2);padding:20px 22px}
+  .spec .v{font-family:var(--display);font-size:1.7rem;font-weight:600;letter-spacing:-.01em}
+  .spec .v small{font-size:.9rem;color:var(--amber);font-weight:600}
+  .spec .l{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  @media(max-width:680px){.specs{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:86px 0;border-bottom:1px solid var(--line-soft)}
+  .sec-head{margin-bottom:46px}
+  .sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,3.4vw,2.5rem);letter-spacing:-.01em;margin-top:14px}
+  .sec-head p{color:var(--muted);max-width:58ch;margin-top:10px}
+
+  /* ---------- EXPERIENCE TIMELINE ---------- */
+  .timeline{position:relative;display:grid;gap:0}
+  .job{
+    display:grid;grid-template-columns:170px 1fr;gap:34px;
+    padding:26px 0;border-top:1px solid var(--line-soft);
+  }
+  .job:last-child{border-bottom:1px solid var(--line-soft)}
+  .job .when{font-family:var(--mono);font-size:.82rem;color:var(--amber)}
+  .job .where{font-family:var(--mono);font-size:.72rem;color:var(--muted-2);margin-top:6px}
+  .job h3{font-family:var(--display);font-weight:600;font-size:1.18rem}
+  .job .role{color:var(--muted);font-size:.92rem;margin-top:2px;margin-bottom:10px}
+  .job p{font-size:.96rem;color:#c5c9d0;max-width:62ch}
+  @media(max-width:680px){.job{grid-template-columns:1fr;gap:10px}}
+
+  /* ---------- PROJECTS ---------- */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  @media(max-width:780px){.grid{grid-template-columns:1fr}}
+  .card{
+    background:var(--bg-2);border:1px solid var(--line-soft);border-radius:var(--r);
+    overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s;
+  }
+  .card:hover{border-color:#43495a;transform:translateY(-3px)}
+  .card.feature{grid-column:1 / -1}
+  .card.feature .shot{aspect-ratio:21/9}
+  .shot{position:relative;aspect-ratio:16/10;background:var(--bg-3);overflow:hidden}
+  .shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .card:hover .shot img{transform:scale(1.04)}
+  .shot .ph{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:.75rem;color:var(--muted-2);
+    background:repeating-linear-gradient(45deg,#22262f,#22262f 12px,#242936 12px,#242936 24px);
+  }
+  .badge{
+    position:absolute;top:12px;left:12px;font-family:var(--mono);font-size:.66rem;
+    letter-spacing:.1em;text-transform:uppercase;background:rgba(20,24,31,.82);
+    border:1px solid var(--line);color:var(--amber);padding:5px 10px;border-radius:6px;backdrop-filter:blur(4px);
+  }
+  .card-body{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+  .card-meta{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
+  .card h3{font-family:var(--display);font-weight:600;font-size:1.25rem;letter-spacing:-.01em;line-height:1.2}
+  .card .sub{color:var(--amber);font-size:.85rem;font-family:var(--mono);margin-top:-4px}
+  .card p{font-size:.94rem;color:#c2c6cd}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:6px}
+  .tag{font-family:var(--mono);font-size:.7rem;background:var(--bg-3);border:1px solid var(--line-soft);color:var(--muted);padding:4px 9px;border-radius:6px}
+  .card-links{display:flex;gap:18px;flex-wrap:wrap;padding-top:6px}
+  .card-links a{font-family:var(--mono);font-size:.8rem;color:var(--text);border-bottom:1px solid var(--amber);padding-bottom:2px;transition:.2s}
+  .card-links a:hover{color:var(--amber)}
+  .card-links a::after{content:" ↗";color:var(--amber)}
+
+  /* ---------- SKILLS ---------- */
+  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  @media(max-width:680px){.skills{grid-template-columns:1fr}}
+  .skillset{background:var(--bg-2);border:1px solid var(--line-soft);border-radius:var(--r);padding:24px}
+  .skillset h3{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:.86rem;background:var(--bg-3);border:1px solid var(--line-soft);padding:7px 13px;border-radius:8px;color:#d2d6dd}
+
+  /* ---------- CREDS (certs + edu) ---------- */
+  .creds{display:grid;grid-template-columns:1.3fr 1fr;gap:22px}
+  @media(max-width:780px){.creds{grid-template-columns:1fr}}
+  .panel{background:var(--bg-2);border:1px solid var(--line-soft);border-radius:var(--r);padding:28px}
+  .panel > .kicker{margin-bottom:22px}
+  .cert{border-top:1px solid var(--line-soft);padding:16px 0}
+  .cert:first-of-type{border-top:none;padding-top:0}
+  .cert h4{font-family:var(--display);font-weight:600;font-size:1.04rem}
+  .cert .meta{font-family:var(--mono);font-size:.75rem;color:var(--amber);margin:3px 0 6px}
+  .cert p{font-size:.9rem;color:var(--muted)}
+  .edu-deg{font-family:var(--display);font-size:1.3rem;font-weight:600;line-height:1.2;margin-bottom:4px}
+  .edu-school{color:var(--amber);font-family:var(--mono);font-size:.82rem;margin-bottom:18px}
+  .edu-row{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line-soft);padding:13px 0;font-size:.92rem}
+  .edu-row span:first-child{color:var(--muted)}
+  .edu-row b{font-family:var(--display);font-size:1.05rem}
+  .edu-row .ap{color:var(--good)}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact{text-align:center;padding:100px 0}
+  .contact h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.02em;line-height:1.05;max-width:18ch;margin:18px auto 0}
+  .contact .lede{margin-left:auto;margin-right:auto;text-align:center}
+  .contact .kicker{justify-content:center}
+  .contact .kicker::before{display:none}
+  .contact-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:36px}
+  footer{border-top:1px solid var(--line-soft);padding:30px 0}
+  .foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:.76rem;color:var(--muted-2)}
+  .foot-in a{color:var(--muted)}
+  .foot-in a:hover{color:var(--amber)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="brand">T<b>/</b>A · <span style="color:var(--muted)">mechatronics</span></a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="Taha_Gamal_Alieldin_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top">
+  <canvas id="voronoi"></canvas>
+  <div class="hero-fade"></div>
+  <div class="wrap hero">
+    <div class="status"><span class="dot"></span> Available for engineering roles · Cairo, Egypt</div>
+    <h1>I build machines that <span class="amb">sense, decide,</span> and move.</h1>
+    <p class="lede">
+      Mechatronics engineer working across <b>automation, robotics, and machine learning</b> —
+      from an autonomous land-surveying swarm running on ROS&nbsp;2, to PLC-driven factory
+      lines, pneumatic manipulators, and control systems tuned on real hardware.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#work">View selected work</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+
+    <div class="specs">
+      <div class="spec"><div class="v">A<small>+</small></div><div class="l">Graduation project</div></div>
+      <div class="spec"><div class="v">100K<small> EGP</small></div><div class="l">ASRT research grant won</div></div>
+      <div class="spec"><div class="v">8</div><div class="l">Engineer team led</div></div>
+      <div class="spec"><div class="v">2.75</div><div class="l">Cumulative GPA · B−</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- SELECTED WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Selected work</span>
+      <h2>Six projects, one throughline: closing the loop.</h2>
+      <p>Autonomy, control, vision, and industrial automation — built end to end, from mechanical design and simulation through to controllers running on real hardware.</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- 1. SWARM (feature) -->
+      <article class="card feature">
+        <div class="shot">
+          <span class="badge">Graduation project · A+</span>
+          <img src="images/Swarm_-_Image.jpeg" alt="Three autonomous surveying rovers deployed on open terrain"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">images/Swarm_-_Image.jpeg</div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">2025 — 2026 · Team lead (8 engineers)</div>
+          <h3>AI-Enhanced Autonomous Surveying Swarm</h3>
+          <div class="sub">ROS 2 Humble · multi-robot coverage</div>
+          <p>
+            A three-rover swarm that autonomously surveys terrain. Built the ROS&nbsp;2 architecture —
+            multi-robot namespacing, Nav2/TF bring-up, and Voronoi-partitioned, stigmergy-based coverage
+            planning — with Gazebo simulation and CycloneDDS tuned for field Wi-Fi. Pitched the prototype
+            to win a 100K&nbsp;EGP research grant from ASRT.
+          </p>
+          <div class="tags">
+            <span class="tag">ROS 2</span><span class="tag">Nav2</span><span class="tag">Gazebo</span>
+            <span class="tag">Voronoi coverage</span><span class="tag">CycloneDDS</span><span class="tag">Python / C++</span>
+          </div>
+          <div class="card-links">
+            <a href="reports/Surveying_Swarm_Report.pdf" target="_blank" rel="noopener">Read report</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. CNN-LSTM -->
+      <article class="card">
+        <div class="shot">
+          <span class="badge">Report available</span>
+          <img src="images/Machine_Vision_-_Image.jpeg" alt="Machine vision and recognition interface"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">images/Machine_Vision_-_Image.jpeg</div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">2025 — 2026 · Team lead (4)</div>
+          <h3>Real-Time Human Behavior Recognition</h3>
+          <div class="sub">Hybrid CNN-LSTM pipeline</div>
+          <p>Directed a four-person team building a real-time action-classification system that pairs a CNN spatial encoder with an LSTM for temporal modeling — reaching the highest accuracy in the cohort.</p>
+          <div class="tags"><span class="tag">CNN</span><span class="tag">LSTM</span><span class="tag">OpenCV</span><span class="tag">Deep learning</span></div>
+          <div class="card-links">
+            <a href="reports/Human_Behavior_Recognition_Report.pdf" target="_blank" rel="noopener">Read report</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. FURUTA -->
+      <article class="card">
+        <div class="shot">
+          <span class="badge">Report available</span>
+          <img src="images/Rotary_furuta_pendulum_-_image.jpeg" alt="Rotary Furuta pendulum control rig"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">images/Rotary_furuta_pendulum_-_image.jpeg</div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">2025 — 2026 · Controls</div>
+          <h3>Furuta Pendulum Control System</h3>
+          <div class="sub">LQR · Hardware-in-the-Loop</div>
+          <p>Designed an LQR controller to balance a rotary inverted pendulum against disturbances. Modeled in SimMechanics, sequenced with a state-flow controller, and validated through hardware-in-the-loop testing.</p>
+          <div class="tags"><span class="tag">MATLAB / Simulink</span><span class="tag">LQR</span><span class="tag">SimMechanics</span><span class="tag">State machines</span></div>
+          <div class="card-links">
+            <a href="reports/Furuta_Pendulum_Report.pdf" target="_blank" rel="noopener">Read report</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. PNEUMATIC ARM (report) -->
+      <article class="card">
+        <div class="shot">
+          <span class="badge">Report available</span>
+          <img src="images/Electro-Pneumatic_-_image.jpeg" alt="3-DOF pneumatic humanoid arm and electro-pneumatic control board"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">images/Electro-Pneumatic_-_image.jpeg</div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Hydraulics & Pneumatics · Team of 7</div>
+          <h3>Pneumatic Humanoid Arm</h3>
+          <div class="sub">3-DOF pick-and-place</div>
+          <p>
+            A three-DOF arm (elbow, wrist, gripper) driven by double-acting cylinders and 5/2 solenoid
+            valves, with an Arduino running closed-loop sequential control off limit-switch feedback.
+            Sized every cylinder and the full air-consumption budget, simulated in Automation Studio,
+            then built it — 3D-printed PLA, laser-cut acrylic, ~34&nbsp;N of fingertip grip.
+          </p>
+          <div class="tags"><span class="tag">Pneumatics</span><span class="tag">Arduino</span><span class="tag">Automation Studio</span><span class="tag">Sequential control</span></div>
+          <div class="card-links">
+            <a href="reports/Humanoid_Arm_Pneumatic_Report.pdf" target="_blank" rel="noopener">Read report</a>
+            <a href="https://drive.google.com/drive/folders/1EAlLHo0TKiAo2lXQEAJaouZRjdBGVw_0" target="_blank" rel="noopener">Simulation</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. FACTORY IO (report) -->
+      <article class="card">
+        <div class="shot">
+          <span class="badge">Report available</span>
+          <img src="images/Automarion-_image.jpeg" alt="Simulated industrial production line with PLC"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">images/Automarion-_image.jpeg</div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">Industrial Automation · Team of 6</div>
+          <h3>Automated Production Line</h3>
+          <div class="sub">Siemens TIA Portal · Factory I/O</div>
+          <p>
+            A full virtual factory built in Factory I/O and controlled by a Siemens S7-1200 (PLCSIM):
+            vision-based color sorting, four CNC machining centers producing bases and lids, two-axis
+            pick-and-place assembly, a SIMATIC HMI, and a part counter that auto-stops the line. Owned
+            the CNC start/stop logic, station-stop sequencing, and the Factory I/O build.
+          </p>
+          <div class="tags"><span class="tag">TIA Portal</span><span class="tag">PLC / Ladder</span><span class="tag">Factory I/O</span><span class="tag">SIMATIC HMI</span></div>
+          <div class="card-links">
+            <a href="reports/Industrial_Automation_Report.pdf" target="_blank" rel="noopener">Read report</a>
+            <a href="https://drive.google.com/drive/folders/1jWPdvPN05TNjpQz9lUA599fIpiwGh2iC" target="_blank" rel="noopener">Project files</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6. FEA PLATE -->
+      <article class="card">
+        <div class="shot">
+          <span class="badge">Report available</span>
+          <img src="images/plate-_Image.jpeg" alt="CAD model of a mobile-robot chassis base plate"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="ph" style="display:none">images/plate-_Image.jpeg</div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">FEA · Team project</div>
+          <h3>Mobile-Robot Chassis Plate (FEA)</h3>
+          <div class="sub">Structural analysis</div>
+          <p>Finite-element stress and deformation study of a mobile-robot chassis base plate under operating loads. Led the engineering documentation and results interpretation, translating the theoretical derivation into the final technical report.</p>
+          <div class="tags"><span class="tag">FEA</span><span class="tag">CalculiX / MATLAB</span><span class="tag">Inventor</span><span class="tag">Technical reporting</span></div>
+          <div class="card-links">
+            <a href="reports/Chassis_Plate_FEA_Report.pdf" target="_blank" rel="noopener">Read report</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Experience</span>
+      <h2>Where I've worked.</h2>
+      <p>Hands-on exposure across oil &amp; gas instrumentation, embedded robotics, and customer-facing sales.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="job">
+        <div><div class="when">Aug 2025</div><div class="where">Ain Shams University</div></div>
+        <div>
+          <h3>Luban Workshop</h3>
+          <div class="role">Embedded Robotics Trainee</div>
+          <p>Built and programmed a differential-drive MicroMouse robot — embedded firmware, motor control, and maze-solving logic.</p>
+        </div>
+      </div>
+      <div class="job">
+        <div><div class="when">Jul 2025</div><div class="where">Cairo</div></div>
+        <div>
+          <h3>ENPPI</h3>
+          <div class="role">Instrumentation &amp; Control Intern</div>
+          <p>Studied instrumentation and process control — sensors, transducers, and P&amp;ID — with hands-on exposure to SCADA, PLC, and DCS systems.</p>
+        </div>
+      </div>
+      <div class="job">
+        <div><div class="when">Jul — Aug 2023</div><div class="where">Cairo office + fields</div></div>
+        <div>
+          <h3>Norpetco (North Petroleum Company)</h3>
+          <div class="role">Production &amp; Field Operations Trainee</div>
+          <p>Completed office and on-site field training — observing power generation, artificial-lift equipment (Lufkin beam pumps, ESP), and firefighting systems.</p>
+        </div>
+      </div>
+      <div class="job">
+        <div><div class="when">2022 — 2025</div><div class="where">Mokattam, Cairo</div></div>
+        <div>
+          <h3>Fitness Time Gym</h3>
+          <div class="role">Sales &amp; Receptionist</div>
+          <p>#1 sales representative for three consecutive months, generating roughly 300K EGP in monthly revenue — strong customer-facing communication and negotiation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Toolbox</span>
+      <h2>Technical skills.</h2>
+    </div>
+    <div class="skills">
+      <div class="skillset">
+        <h3>Control &amp; Automation</h3>
+        <div class="chips">
+          <span class="chip">PLC (ladder logic)</span><span class="chip">Siemens TIA Portal</span>
+          <span class="chip">Classic control</span><span class="chip">LQR</span>
+          <span class="chip">State machines</span><span class="chip">VFD / motor drives</span>
+          <span class="chip">SCADA / DCS</span>
+        </div>
+      </div>
+      <div class="skillset">
+        <h3>Programming &amp; Tools</h3>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">C++</span><span class="chip">MATLAB / Simulink</span>
+          <span class="chip">ROS 2</span><span class="chip">Gazebo</span><span class="chip">OpenCV</span>
+          <span class="chip">Automation Studio</span>
+        </div>
+      </div>
+      <div class="skillset">
+        <h3>ML &amp; Vision</h3>
+        <div class="chips">
+          <span class="chip">CNN</span><span class="chip">LSTM</span><span class="chip">Deep learning</span>
+          <span class="chip">Action recognition</span>
+        </div>
+      </div>
+      <div class="skillset">
+        <h3>Mechanical &amp; Design</h3>
+        <div class="chips">
+          <span class="chip">Autodesk Inventor</span><span class="chip">Ansys / FEA</span>
+          <span class="chip">Pneumatics</span><span class="chip">3D printing</span><span class="chip">Laser cutting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="creds">
+  <div class="wrap">
+    <div class="creds">
+      <div class="panel">
+        <span class="kicker">Certifications</span>
+        <div class="cert">
+          <h4>Advanced Automation</h4>
+          <div class="meta">HA Consulting Group · expected Sep 2026</div>
+          <p>Currently in progress — advanced industrial automation.</p>
+        </div>
+        <div class="cert">
+          <h4>Basic Automation — A+ across all modules</h4>
+          <div class="meta">HA Consulting Group · 2024</div>
+          <p>Classic control, PLC basic programming (ladder logic, Siemens TIA Portal), and electric motor &amp; drive programming (VFDs).</p>
+        </div>
+        <div class="cert">
+          <h4>OSHA Construction &amp; Industry Safety</h4>
+          <div class="meta">Orascom Construction · Feb 2025</div>
+          <p>Workplace and construction-site safety standards.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <span class="kicker">Education</span>
+        <div class="edu-deg">BSc Mechatronics Engineering</div>
+        <div class="edu-school">Ain Shams University · 2021 — 2026</div>
+        <div class="edu-row"><span>Cumulative GPA</span><b>2.75 <small style="color:var(--muted);font-family:var(--body)">(B−)</small></b></div>
+        <div class="edu-row"><span>Graduation project</span><b class="ap">A+</b></div>
+        <div class="edu-row"><span>Focus</span><b style="font-size:.92rem;font-family:var(--body);color:var(--muted)">Automation · Robotics · ML</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <span class="kicker">Contact</span>
+    <h2>Let's build something that moves.</h2>
+    <p class="lede">Open to engineering roles in mechatronics, automation, PLC/robotics, and controls. Fastest way to reach me is email.</p>
+    <div class="contact-row">
+      <a class="btn btn-primary" href="mailto:tahajralieldin@gmail.com">tahajralieldin@gmail.com</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/taha-alieldin" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="tel:+201032949396">+20 103 294 9396</a>
+      <a class="btn btn-ghost" href="Taha_Gamal_Alieldin_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>© <span id="yr"></span> Taha Gamal Alieldin · Mechatronics Engineer</span>
+    <span>Cairo, Egypt · Military status: exempted</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---- Voronoi coverage field: a nod to the swarm's Voronoi-partitioned planning ---- */
+  (function(){
+    const canvas = document.getElementById('voronoi');
+    const ctx = canvas.getContext('2d');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const CELL = 30;                 // coarse grid for cheap nearest-seed fill
+    const SEEDN = 8;                  // drifting "agents"
+    let W=0,H=0,dpr=1,seeds=[];
+
+    function rand(a,b){return a+Math.random()*(b-a)}
+    function init(){
+      const r = canvas.parentElement.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio||1, 2);
+      W = r.width; H = r.height;
+      canvas.width = W*dpr; canvas.height = H*dpr;
+      canvas.style.width = W+'px'; canvas.style.height = H+'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      seeds = Array.from({length:SEEDN},()=>({
+        x:rand(0,W), y:rand(0,H),
+        vx:rand(-.18,.18), vy:rand(-.18,.18),
+        shade:rand(.03,.09)
+      }));
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      // fill coarse cells by nearest seed (ambient partition)
+      for(let gx=0; gx<W; gx+=CELL){
+        for(let gy=0; gy<H; gy+=CELL){
+          const cx=gx+CELL/2, cy=gy+CELL/2;
+          let best=0,bd=1e9;
+          for(let i=0;i<seeds.length;i++){
+            const dx=cx-seeds[i].x, dy=cy-seeds[i].y, d=dx*dx+dy*dy;
+            if(d<bd){bd=d;best=i;}
+          }
+          ctx.fillStyle='rgba(230,162,60,'+seeds[best].shade+')';
+          ctx.fillRect(gx,gy,CELL,CELL);
+        }
+      }
+      // boundaries where neighboring cells differ
+      ctx.strokeStyle='rgba(120,132,150,.10)';ctx.lineWidth=1;
+      for(let gx=0; gx<W; gx+=CELL){
+        for(let gy=0; gy<H; gy+=CELL){
+          const o=owner(gx+CELL/2,gy+CELL/2);
+          if(gx+CELL<W && owner(gx+CELL+CELL/2,gy+CELL/2)!==o){ctx.beginPath();ctx.moveTo(gx+CELL,gy);ctx.lineTo(gx+CELL,gy+CELL);ctx.stroke();}
+          if(gy+CELL<H && owner(gx+CELL/2,gy+CELL+CELL/2)!==o){ctx.beginPath();ctx.moveTo(gx,gy+CELL);ctx.lineTo(gx+CELL,gy+CELL);ctx.stroke();}
+        }
+      }
+      // agents
+      for(const s of seeds){
+        ctx.beginPath();ctx.arc(s.x,s.y,2.4,0,7);ctx.fillStyle='rgba(230,162,60,.85)';ctx.fill();
+        ctx.beginPath();ctx.arc(s.x,s.y,7,0,7);ctx.strokeStyle='rgba(230,162,60,.3)';ctx.lineWidth=1;ctx.stroke();
+      }
+    }
+    function owner(cx,cy){
+      let best=0,bd=1e9;
+      for(let i=0;i<seeds.length;i++){const dx=cx-seeds[i].x,dy=cy-seeds[i].y,d=dx*dx+dy*dy;if(d<bd){bd=d;best=i;}}
+      return best;
+    }
+    function step(){
+      for(const s of seeds){
+        s.x+=s.vx;s.y+=s.vy;
+        if(s.x<0||s.x>W)s.vx*=-1;
+        if(s.y<0||s.y>H)s.vy*=-1;
+      }
+      draw();
+      raf=requestAnimationFrame(step);
+    }
+    let raf;
+    function start(){cancelAnimationFrame(raf); init(); if(reduce){draw();}else{step();}}
+    window.addEventListener('resize',()=>{clearTimeout(window._vr);window._vr=setTimeout(start,180)});
+    start();
+  })();
+</script>
+</body>
+</html>

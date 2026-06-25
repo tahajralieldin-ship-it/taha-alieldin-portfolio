@@ -1,0 +1,7 @@
+Put your 6 project images here, with these exact filenames:
+  Swarm_-_Image.jpeg
+  Machine_Vision_-_Image.jpeg
+  Rotary_furuta_pendulum_-_image.jpeg
+  Electro-Pneumatic_-_image.jpeg
+  Automarion-_image.jpeg
+  plate-_Image.jpeg
